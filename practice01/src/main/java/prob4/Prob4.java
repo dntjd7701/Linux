@@ -11,14 +11,14 @@ public class Prob4 {
 		String text = scanner.nextLine();
 
 		int length = text.length();
-		for( int i = 0; i < length; i++ ) {
-			for( int j = 0; j <= i; j++ ) {
-				System.out.print( text.charAt( j ) );
+		for(int i = 0; i < length; i++) {
+			for(int j = 0; j <= i; j++) {
+				System.out.print(text.charAt(j));
 			}
-			
-			System.out.println( "" );
+
+			System.out.println("");
 		}
-		
+
 		scanner.close();
 	}
 

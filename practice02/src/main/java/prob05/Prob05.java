@@ -7,8 +7,8 @@ public class Prob05 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		
-		while (true) {
+
+		while(true) {
 			// 게임 변수 초기화
 			int minNumber = 1;
 			int maxNumber = 100;
@@ -19,9 +19,9 @@ public class Prob05 {
 
 			// 게임 시작
 			int countTry = 0;
-			System.out.println( "수를 결정하였습니다. 맞추어 보세요:" );
+			System.out.println("수를 결정하였습니다. 맞추어 보세요:");
 
-			while (true) {
+			while(true) {
 				// 시도 회수 증가
 				countTry++;
 
@@ -34,13 +34,13 @@ public class Prob05 {
 				int guessNumber = scanner.nextInt();
 
 				// 정답
-				if (guessNumber == correctNumber) {
+				if(guessNumber == correctNumber) {
 					System.out.println("맞췄습니다.");
 					break;
 				}
 
 				// 오답인 경우
-				if (guessNumber > correctNumber) {
+				if(guessNumber > correctNumber) {
 					System.out.println("더 낮게");
 					maxNumber = guessNumber;
 				} else {
@@ -51,12 +51,10 @@ public class Prob05 {
 
 			System.out.print("다시 하시겠습니까?(y/n)>>");
 			String answer = scanner.next();
-			if( "y".equals( answer ) == false ) {
+			if("y".equals(answer.toLowerCase()) == false) {
 				break;
 			}
 		}
-		
 		scanner.close();
 	}
-
 }
