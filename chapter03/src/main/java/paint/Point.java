@@ -27,4 +27,12 @@ public class Point {
 	public void show() {
 		System.out.println("점[" + x + "," + y +"]에 점을 그렸습니다.");
 	}
+
+	public void show(boolean visible) {
+		if(visible) {
+			show();
+		} else {		
+			System.out.println("점[" + x + "," + y +"]에 점을 지웠습니다");
+		}	
+	}
 }
