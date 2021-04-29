@@ -22,7 +22,7 @@ public class PaintApp {
 		
 		Triangle triangle = new Triangle();
 		// drawTriangle(triangle);
-		drawShape(triangle);
+		drawShape(p);
 		
 		Circle circle = new Circle();
 		drawShape(circle);
