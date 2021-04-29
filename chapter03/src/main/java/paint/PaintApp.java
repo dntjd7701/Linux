@@ -18,28 +18,35 @@ public class PaintApp {
 		
 		Rect rect = new Rect();
 		// drawRect(rect);
-		drawShape(rect);
+		// drawShape(rect);
+		draw(rect);
 		
 		Triangle triangle = new Triangle();
 		// drawTriangle(triangle);
-		drawShape(p);
+		// drawShape(triangle);
+		draw(triangle);
 		
 		Circle circle = new Circle();
-		drawShape(circle);
+		// drawShape(circle);
+		draw(circle);
 	}
-	
-//	public static void drawColorPoint(ColorPoint pt) {
-//		pt.show();
-//	}
-	
-	public static void drawPoint(Point pt) {
+
+	public static void draw(Drawable drawable) {
 		pt.show();
 	}
 
-	public static void drawShape(Shape shape) {
-		shape.draw();
-	}
-
+//	public static void drawColorPoint(ColorPoint pt) {
+//		pt.show();
+//	}
+//	
+//	public static void drawPoint(Point pt) {
+//		pt.show();
+//	}
+//
+//	public static void drawShape(Shape shape) {
+//		shape.draw();
+//	}
+//
 //	public static void drawRect(Rect rect) {
 //		rect.draw();
 //	}
