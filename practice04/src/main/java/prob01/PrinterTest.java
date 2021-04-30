@@ -14,7 +14,5 @@ public class PrinterTest {
 		System.out.println(printer.sum(1, 2));
 		System.out.println(printer.sum(1, 2, 3));
 		System.out.println(printer.sum(1, 2, 3, 4, 5));
-		
-		
 	}
 }
