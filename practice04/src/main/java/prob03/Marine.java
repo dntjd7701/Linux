@@ -1,6 +1,6 @@
 package prob03;
 
-public class Marine {
+public class Marine extends Unit {
 
 	void stop() {
 		/* 현재 위치에 정지 */
