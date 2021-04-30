@@ -13,7 +13,7 @@ public class MainApp {
 
 			while (stack.isEmpty() == false) {
 				String s = stack.pop();
-				System.out.println( s );
+				System.out.println(s);
 			}
 
 			System.out.println("======================================");
@@ -23,9 +23,9 @@ public class MainApp {
 
 			System.out.println(stack.pop());
 			System.out.println(stack.pop());
-			
-		} catch ( MyStackException ex) {
-			System.out.println( ex );
+
+		} catch (MyStackException ex) {
+			System.out.println(ex);
 		}
 
 	}
