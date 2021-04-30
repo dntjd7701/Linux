@@ -1,21 +1,43 @@
 package prob5;
 
 public class MyStack {
-	private String[] data;
-	private int top = -1;
+	private int top;
+	private String[] buffer;
 	
-	public MyStack(int size) {
-		data = new String[size];
+	public MyStack(int capacity) {
+		top = -1;
+		buffer = new String[capacity];
 	}
 	
-	public void push(String data) {
-		if(data.length == top) {
+	public void push(String s) {
+		if(top == buffer.length - 1) {
 			resize();
 		}
-		top++;
+		
+		buffer[++top] = s;
+	}
+
+	public String pop() throws MyStackException {
+		if(isEmpty()) {
+			throw new MyStackException("stack is empty");
+		}
+		
+		String result = buffer[top];
+		buffer[top--] = null;
+		
+		return result;
+	}
+
+	public boolean isEmpty() {
+		return top == -1;
 	}
 	
-	public String pop() throws MyStackException {
-	}
-	}
+	private void resize() {
+		String[] temp = new String[buffer.length*2];
+		for(int i = 0; i <= top; i++) {
+			temp[i] = buffer[i];
+		}
+		
+		buffer = temp;
+	}	
 }
