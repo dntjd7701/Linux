@@ -11,7 +11,10 @@ public class BufferedOutputStreamTest {
 		BufferedOutputStream bos = null;
 		
 		try {
+			// 기반 스트림
 			FileOutputStream fis = new FileOutputStream("test.txt");
+			
+			// 보조 스트림
 			bos = new BufferedOutputStream(fis);
 			
 			// for(int i = 'a'; i < 'z'; i++) {
