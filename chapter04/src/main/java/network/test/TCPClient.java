@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class TCPClient {
 	private static final String SERVER_IP = "127.0.0.1";
@@ -40,6 +41,8 @@ public class TCPClient {
 			System.out.println("[client] received:" + data);
 			
 			
+		} catch (SocketException e) {
+			System.out.println("[client] suddenly closed by server");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

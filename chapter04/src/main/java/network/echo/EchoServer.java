@@ -1,4 +1,4 @@
-package netwok.echo;
+package network.echo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
