@@ -31,11 +31,12 @@ public class Gugudan {
 
 		System.out.print( "\n\n" );
 		System.out.print( "answer:" );
-
+		
 		Scanner s = new Scanner( System.in );
-		//
-		//  이 부분에 적당한 코드를 작성합니다.  
-		//
+		int answer = s.nextInt();
+		s.close();
+		
+		System.out.println( ( answer == resultNumber ) ? "정답" : "오답" ); 
 	}
 
 	private static int randomize( int lNum, int rNum ) {
@@ -57,7 +58,7 @@ public class Gugudan {
 	        
 	        boolean evaluted = false;
 	        for( int i = 0; i < occupied; i++ ) {
-	        	if( /* 이 부분에 적당 조건의 코드를 입력 합니다. */ ) {
+	        	if( random == boardNumbers[ i ] || random == resultNumber ) {
 	        		evaluted = true;
 	        		break;
 	        	}
@@ -66,7 +67,7 @@ public class Gugudan {
 	        if( !evaluted ) {
 	        	boardNumbers[ occupied++ ] = random;
 	        }
-		}
+	}
 		
         return boardNumbers;
 	}	
