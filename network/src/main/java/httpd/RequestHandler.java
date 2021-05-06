@@ -55,24 +55,11 @@ public class RequestHandler extends Thread {
 			if("GET".equals(tokens[0])) {
 				consoleLog("request:" + tokens[1]);
 				responseStaticResource(os, tokens[1], tokens[2]);
-			} else { // methods: POST, PUT, DELETE, HEAD, CONNECT
-				/* Simple Http Server 에서는 무시 */
-			
-				// 응답 예시
-				// HTTP/1.1 400 Bas Request\r\n
-				// Content-Type:text/html; charset=utf-8\r\n
-				// \r\n
-				// HTML 에러 문서 (./webapp/error/400.html)
-
-				
-				// response400Error(os, token[1], token[2]);
+			} else { 
+				// methods: POST, PUT, DELETE, HEAD, CONNECT
+				// Simple Http Server 에서는 무시
+				response400Error(os, tokens[1], tokens[2]);
 			}
-			// 예제 응답입니다.
-			// 서버 시작과 테스트를 마친 후, 주석 처리 합니다.
-			// os.write( "HTTP/1.1 200 OK\r\n".getBytes( "UTF-8" ) );
-			// os.write( "Content-Type:text/html; charset=utf-8\r\n".getBytes( "UTF-8" ) );
-			// os.write( "\r\n".getBytes() );
-			// os.write( "<h1>이 페이지가 잘 보이면 실습과제 SimpleHttpServer를 시작할 준비가 된 것입니다.</h1>".getBytes( "UTF-8" ) );
 		} catch(Exception ex) {
 			consoleLog("error:" + ex);
 		} finally {
@@ -81,7 +68,6 @@ public class RequestHandler extends Thread {
 				if( socket != null && socket.isClosed() == false ) {
 					socket.close();
 				}
-				
 			} catch( IOException ex ) {
 				consoleLog( "error:" + ex );
 			}
@@ -100,13 +86,7 @@ public class RequestHandler extends Thread {
 		
 		File file = new File(DOCUMENTROOT + url);
 		if(file.exists() == false) {
-			// 응답 예시
-			// HTTP/1.1 404 File Not Found\r\n
-			// Content-Type:text/html; charset=utf-8\r\n
-			// \r\n
-			// HTML 에러 문서 (./webapp/error/404.html)
-			
-			// response404Error(os, url, protocol);
+			response404Error(os, url, protocol);
 			return;
 		}
 		
@@ -114,6 +94,43 @@ public class RequestHandler extends Thread {
 		byte[] body = Files.readAllBytes(file.toPath());
 		String contentType = Files.probeContentType(file.toPath());
 		os.write((protocol + " 200 OK\r\n").getBytes("UTF-8"));
+		os.write(("Content-Type:" + contentType + "; charset=utf-8\r\n").getBytes( "UTF-8" ));
+		os.write("\r\n".getBytes() );
+		os.write(body);
+	}
+
+	private void response400Error(
+		OutputStream os,
+		String url,
+		String protocol) throws IOException {
+		File file = new File(DOCUMENTROOT + "/error/400.html");
+		if(file.exists() == false) {
+			response404Error(os, url, protocol);
+			return;
+		}
+		
+		byte[] body = Files.readAllBytes(file.toPath());
+		String contentType = Files.probeContentType(file.toPath());
+		os.write((protocol + " 400 Bad Request\r\n").getBytes("UTF-8"));
+		os.write(("Content-Type:" + contentType + "; charset=utf-8\r\n").getBytes( "UTF-8" ));
+		os.write("\r\n".getBytes() );
+		os.write(body);
+	}
+	
+	private void response404Error(
+		OutputStream os,
+		String url,
+		String protocol)  throws IOException {
+
+		File file = new File(DOCUMENTROOT + "/error/404.html");
+		if(file.exists() == false) {
+			response404Error(os, url, protocol);
+			return;
+		}
+		
+		byte[] body = Files.readAllBytes(file.toPath());
+		String contentType = Files.probeContentType(file.toPath());
+		os.write((protocol + " 404 File Not Found\r\n").getBytes("UTF-8"));
 		os.write(("Content-Type:" + contentType + "; charset=utf-8\r\n").getBytes( "UTF-8" ));
 		os.write("\r\n".getBytes() );
 		os.write(body);
