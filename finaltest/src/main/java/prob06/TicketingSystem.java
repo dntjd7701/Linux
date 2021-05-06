@@ -13,18 +13,16 @@ public class TicketingSystem {
 	}
 	
 	public boolean cancelReservation( String customer_name ) {
-		/* 예약 취소 기능 구현 코드를 작성합니다. */
-		int count = listReservation.size();
-		for(int i =0; i<count; i++){
-			if(customer_name.equals((listReservation.get(i)).getCustomerName())){
-				System.out.println("Cancelled.");
-				listReservation.remove(i);
-				return true;
-			}
+		Reservation target = null;
+		for( Reservation item:listReservation ) {
+			if ( item.getCustomerName() == customer_name );
+			target = item;
 		}
 		
-		System.out.println("Not Found");
-		return false;
+		if(target != null)
+			return listReservation.remove( target ) ;
+		else
+			return false;
 	}
 		
 	public int reservedCount( int movie_id ) {
