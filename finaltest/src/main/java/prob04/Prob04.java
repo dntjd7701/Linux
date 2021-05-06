@@ -1,6 +1,6 @@
 package prob04;
 
-public class Prob4 {
+public class Prob04 {
 
 	public static void main(String[] args) {
 		Person person1 = new Person( "김자바" );
