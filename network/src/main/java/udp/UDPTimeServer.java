@@ -6,15 +6,32 @@ import java.util.Date;
 
 public class UDPTimeServer {
 
+	private static final int PORT = 9000;
+	private static final int BUFFER_SIZE = 0;
+	
 	public static void main(String[] args) {
-		//2. 데이터 수신
-		DatagramPacket receivePacket = new DatagramPacket(new byte[0], 0);
-		socket.receive(receivePacket); //blocking
+		DatagramSocket socket = null;
 		
-		//3. 데이터 송신
-		String now = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
-		
-		
-	}
+		try {
+			socket = new DatagramSocket( PORT );
 
+			while( true ) {
+				DatagramPacket receivePacket = 
+						new DatagramPacket( new byte[ BUFFER_SIZE ], BUFFER_SIZE );
+				
+				socket.receive( receivePacket );
+				
+				String now = new SimpleDateFormat( "yyyy-MM-dd hh:mm:ss" ).format( new Date() );
+				byte[] sendData = now.getBytes( "UTF-8" );
+				DatagramPacket sendPacket = new DatagramPacket( sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort() );
+				socket.send( sendPacket );
+ 			}
+		} catch( IOException e ) {
+			e.printStackTrace();
+		} finally {
+			if( socket != null && socket.isClosed() == false ) {
+				socket.close();
+			}
+		}
+	}
 }
