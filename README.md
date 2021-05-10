@@ -1,7 +1,7 @@
 # Linux
     21.05.10
 
-드디어 리눅스의 시작 !
+###드디어 리눅스의 시작 !
 
 개발 환경,
 Desktop -> Oracle VM, CentOS7
