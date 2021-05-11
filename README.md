@@ -49,6 +49,25 @@ mount = 디스크나 usb와 같은 특정 디바이스를 사용하기 위해 �
 systemctl is-enabled sshd = 서비스 등록/해제 (부팅과 함께 서비스가 실행되는 것의 설정과 해제), 이건 그 유무를 물어봄.
 systemctl start/stop/restart = 서비스의 시작/종료/다시시작
 
+useradd -D (/etc/default) = 사용자 생성 시 기본 정보 (홈, skel정보 - 스켈 디렉토리에서 유저 디렉터리로 파일 복사함, shell종류 etc..)
+useradd username = 그룹을 별도로 지정하지 않으면 새로 그룹을 만들어 유저를 생성함
+useradd -g users user2 = user2를 생성해서 users라는 그룹에 포함시킨다.
+useradd -M user3 = 홈 디렉터리 없이 유저를 생성, 특수한 목적을 위해 필요한 경우.
+
+userdel userID = user삭제 
+
+groupadd groupID = group 생성
+groupdel = group 삭제
+groups groupID = 어느 그룹에 속해있는지 확인.
+
+
+
+passwd(root에서) = root비밀번호 변경
+passwd userID = userID 비밀번호 설정 및 변경
+
+
+
+
 
 
 
@@ -167,5 +186,12 @@ root = root
 etc = 설정파일
 
 
+# 05.11
+
+v 다중 사용자 환경. 서비스와 같음
+v 네트워크 보안, 트래픽 제어
+v ssh 접속으로 바로 루트로 접속 불가, 루트 접속 권한이 있는 사용자 계정으로 접속 후 전환해야한다.
+v shell 종류 : bsh, bash, ksh, zsh etc..
+v 
 
 
