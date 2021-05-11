@@ -255,6 +255,11 @@ chmod 명령어를 사용하여 권한 설정, ex) chmod 700
 /home = user들의 기본 경로.
 /dev = device 파일들의 집합
 
+기본적으로 프로그램 다운시 설치되는 경로
+/usr/local/bin 
+/usr/local/lib == 라이브러리
+
+
 
 
 
@@ -288,7 +293,54 @@ tar xvfz == 압축 해제 및 아카이빙 해제
  gzip -d file.gz == gzip압축해제 
     
  
+### #12. JAVA 다운
+일반 웹에서 링크 걸려있는 다운로드
+다운로드 링크 복사
+wget (shift+insert == 붙여넣기)
 
+**로컬에서 움직이고 싶을땐 lcd
+
+        1. JDK 다운 (oracle의 경우, wget이 안되도록 되어있음)
+jdk-8u291-linux-x64.tar.gz 다운(java 8)(로컬에)
+
+
+        2. ftp 이용
+파일 설치 위치로 xshell을 이용하여 이동
+-- sftp userID@IP
+-- 파일명 복사 (ctrl + insert)
+-- put 파일명(shitf + insert)
+
+        3. 올라와있는거 확인후 해제, root홈으로 
+
+        4. 파일 위치 정하기
+
+/usr/local/douzone2021/java(java,git,mariadb)
+
+
+        5. 파일을 지정된 디렉터리로 옮기기 (설치)
+        6. 링크 파일 생성하기 (버전 관리)
+ln -s /usr/local/douzone/java1.8 /usr/local/douzone2021/java
+
+버전확인
+ /usr/local/douzone2021/java/jdk1.8.0_291/bin/java -version
+ 
+        7.설정
+vi /etc/profile 에 아래 정보 입력
+\# java
+export JAVA_HOME=/usr/local/douzone2021/java/jdk1.8.0_291
+export CLASSPATH=JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin
+
+        8. 현재 shell에 환경에 적용하기
+
+source /etc/profile
+
+        9. 파일 작성하고 컴파일 하기
+
+.java 로 코드 작성하고 
+javac 로 컴파일
+java -cp . 파일경로/파일명(.클래스 빼고)
+완료!
 
 
 
