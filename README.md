@@ -75,12 +75,8 @@ groupadd groupID = group 생성
 groupdel = group 삭제
 groups groupID = 어느 그룹에 속해있는지 확인.
 
-
-
 passwd(root에서) = root비밀번호 변경
 passwd userID = userID 비밀번호 설정 및 변경
-
-whereis ls = ls명령어의 위치
 
 last = 로그인, 로그아웃한 흔적들. reboot 정보들. 
 
@@ -106,8 +102,33 @@ clean:
 
 touch = 파일 수정 안하고 다시 다 컴파일 하고 싶을 때( //touch *.c)
 
+chown -R = chown -R webmaster:wheel /home/webmaster/dowork, 사용자 바꾸기 (-r 디렉토리 밑의 모든 파일도)
+
+
+
 cp = copy
-mv = rename, 옮기기 
+mv = rename, 옮기기
+
+<파일 보기>
+cat = 스크롤 형식으로 보여줌
+more = 한 페이지씩 잡아서 보여줌 
+less = more의 진화된 형, : 형태의 vi편집기와 유사, editting 기능만 제외.
+
+
+<찾기>
+find /찾는위치 -name '*log' = 파일 찾기 명령어
+whereis ls = ls명령어의 위치
+ex) ps -ef | grep sshd | grep -v grep : ps -ef 중에 sshd가 들어간 행 중에서 grep이란 글자가 포함된 행을 제외한 결과를  출력
+
+
+
+<파이프와 리다이렉트>
+프로세스 | 프로세스 = 프로세스의 출력을 다른 프로세스의 입력으로 결과를 출력
+출력 > 파일 = 출력을 파일로 입력
+>> = append역할, 변경 내용을 추가로 입력
+
+
+
 
 
 
@@ -249,6 +270,24 @@ v /dev/pts/0 --> 특수 파일, 파일이라고 생각하면 안됌. 드라이�
 캐릭터형으로 작성.  디스크랑 연결되어있는 파일(sda0,1,2...)은 블록 단위로 파일 맞음. 
 
 v 파일간의 의존성
+
+
+### #11. 압축, tar(archining == 압축 없이 모아논것)
+
+<tar>
+디렉터리 구조를 그대로 유지하면서 모음 
+tar cvf name /경로 및 모을 파일 == 아카이빙
+tar xvf name == 해제
+ 
+tar xvfz == 압축 해제 및 아카이빙 해제
+
+
+<gzip>
+ gzip file == gzip압축
+ gzip -d file.gz == gzip압축해제 
+    
+ 
+
 
 
 
