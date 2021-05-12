@@ -428,7 +428,9 @@ https://iamfreeman.tistory.com/entry/vi-vim-%ED%8E%B8%EC%A7%91%EA%B8%B0-%EB%AA%8
     
     ***** systemctl restart ****
     
-    
+### #14. tomcat 설치
+https://bamdule.tistory.com/56
+참고
    
    
   
