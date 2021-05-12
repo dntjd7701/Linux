@@ -11,6 +11,9 @@
     #9.Unix directory
     #10.05.11
     #11. tar, gzip
+    #12. vi editor
+    #13. 네트워크
+
 
 ### #1. 드디어 리눅스의 시작 !
 
@@ -345,3 +348,87 @@ java -cp . 파일경로/파일명(.클래스 빼고)
 
 
 
+    05. 12
+### #12. vi editor
+
+sHitf + g = 맨 아래로.
+
+"이름설정 + Y/yy = 지정된 행을 버퍼에 이름을 설정하여 저장
+"설정된 이름 + p = 이름으로 저장된 내용을 붙여넣기
+ex)"1 + Y, "1 + p
+
+:w %.old : 백업 파일 만들기
+:!명령어 : 한줄 명령어 shell에서 실행하고 돌아오기
+:sh : shell에서 작업 후 exit하면 다시 돌아옴
+
+
+
+    맥 os clipboard
+맥의 경우 clipboard를 사용하기 위해선 vimrc파일 설정을 해줘야 한다.
+홈에서 .vimrc 파일을 만들어서 vi가 사용자 설정을 읽어들일 수 있게 해주는 것이다.
+
+vi --version | grep file을 통해 설정파일을 저장할 경로를 확인할 수 있다. 
+
+기본적으로
+set nu
+set clipboard=unnamed " use OS clipboard 를 설정하여 
+clipboard 사용과 행 번호 출력을 설정하였다. 
+Tmux에서도 함께 사용하기 위해선
+https://rampart81.github.io/post/vim-clipboard-share/
+아래의 블로그를 읽어보는 것도 좋다. 
+https://iamfreeman.tistory.com/entry/vi-vim-%ED%8E%B8%EC%A7%91%EA%B8%B0-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C-%EB%AA%A9%EB%A1%9D
+
+
+### #13. 네트워크
+
+    DNS 서버 변경하기
+  /etc/resolv.conf -> DNS 주소 변경하기
+  
+  
+    ping, ICMP 열기
+   /etc/sysctl.conf 
+   new.ipv4.icmp_echo_ignore_all=0 입력
+   
+    /etc/hosts
+   ip주소와 별칭 매칭하기 
+   주소 별명
+   dns name 과 hostname 은 다른것
+  
+    netstat -r/t
+   특정 포트가 열려있는지 확인하기 좋음
+   ex) nesstat -a | grep ssh => listen 을 보면 어디로 들어오는지 확인 가능
+    netstat -a | grep portnum
+    netstat -anpt | grep sshd ====>>>>
+    
+    네트워크 카드 다운
+   ifconfig enp0s3 down -> 서버에서 다시 열어줘야함
+   장치명 확인 
+   **** /etc/sysconfig/network-script ******
+   
+   서버에서 다시 up
+  
+  
+    고정 ip 설정하기
+    
+   /etc/sysconfig/network-scripts
+   ifcfg-enp0s3 파일 수정
+   
+        입력하기 
+        BOOTPROTO => "static"
+    IPADDR="192.168.80.116"
+    GATEWAY="192.168.80.254"
+    NETMASK="255.255.255.0"
+    DNS1="168.126.63.1"
+   
+    /etc/resol::v.conf
+    nameserver -> 168.126.63.1
+ 
+    /etc/hosts 
+    /etc/hostname
+    
+    ***** systemctl restart ****
+    
+    
+   
+   
+  
