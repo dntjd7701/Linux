@@ -43,7 +43,6 @@
 	</build>
 	
 	<modules>
-		<module>helloworld</module>
 		<module>chapter03</module>
 		<module>practice01</module>
 		<module>practice02</module>
