@@ -13,6 +13,7 @@
     #11. tar, gzip
     #12. vi editor
     #13. 네트워크
+    #14. git, tomcat, java install
 
 
 ### #1. 드디어 리눅스의 시작 !
@@ -428,9 +429,25 @@ https://iamfreeman.tistory.com/entry/vi-vim-%ED%8E%B8%EC%A7%91%EA%B8%B0-%EB%AA%8
     
     ***** systemctl restart ****
     
-### #14. tomcat 설치
+###  #14. git, tomcat, java install
+
+메모장 참고, 
+
 https://bamdule.tistory.com/56
 참고
    
    
+
+        05.13
+리눅스 내부 구조
+프로세스 자료 구조
+/proc 는 특수 파일로서 프로세스 정보를 받아오는 것임. 
+ps 명령, ps -aux / -ef 자주 사용. 
+
+maven 설치
+
+    export란 ? **
+   shell의 env에서 프로그램들이 프로그램을 사용하기 위해서 위치를 찾아서 상속?할 수 있게 해주는. 
+   찾아갈 수 있게 보내주는 것.
+    
   
