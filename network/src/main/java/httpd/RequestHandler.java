@@ -124,7 +124,7 @@ public class RequestHandler extends Thread {
 
 		File file = new File(DOCUMENTROOT + "/error/404.html");
 		if(file.exists() == false) {
-			response404Error(os, url, protocol);
+			System.out.println("file not found:" + file.getAbsolutePath());
 			return;
 		}
 		
